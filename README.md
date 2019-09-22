@@ -28,7 +28,7 @@ or add your own create tray icon function
 ## customizing
 
 To change the items in tray menu edit `tray.htm`
-after changing it you need to change the width and height in : tray.tis
+after changing it you need to change the width and height in `tray.tis`
 
 To uncenter the tray menu set `trayCenter = false;`
 before your initTray() function call
