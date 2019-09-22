@@ -1,0 +1,64 @@
+<html window-frame="transparent">
+<head>
+<title>Tray Menu</title>
+<style>
+* {
+margin: 0dip;
+padding: 0dip;
+border: none;
+text-decoration: none;
+outline: none;
+box-sizing: border-box;
+}
+html {
+    height: min-content;
+    max-width: 150dip;
+    overflow: hidden;
+    background: transparent;
+}
+body {
+    height: min-content;
+    /* max-width: 150dip; */
+    border-radius: 5dip;
+    overflow: hidden;
+    background: #fff;
+    /* box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08); */
+    /* If you want to add shadow make the body height and width 4px less than html */
+}
+li {
+    display: block;
+    padding: 10dip;
+    background: #fff;
+    font-size: 15dip;
+    font-weight: 500;
+    color: #222;
+}
+li:hover {
+    background: #ddd;
+}
+.header { font-weight: bold; font-size: 12dip; }
+b {
+    display: block;
+    border-bottom: 1dip solid #999;
+}
+</style>
+<script type="text/tiscript">
+    view.state = View.WINDOW_SHOWN;
+    $(body).state.focus = true; // needed for 4.3.0.16
+    event click $(#show) { view.parameters.show(); view.close(); }
+    event click $(#hide) { view.parameters.hide(); view.close(); }
+    event click $(#exit) { view.parameters.close(); view.close(); }
+    view << event activate (as) { if( as === false ) { view.parameters.inactive(); view.close(); } }
+</script>
+</head>
+<body>
+<ul>
+    <li.header>Sciter TrayMenu</li>
+    <b/>
+    <li #show>Show app</li>
+    <li #hide>Hide app</li>
+    <b/>
+    <li #exit>Exit!</li>
+</ul>
+</body>
+</html>
