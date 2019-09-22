@@ -48,7 +48,7 @@ b {
     event click $(#show) { view.parameters.show(); view.close(); }
     event click $(#hide) { view.parameters.hide(); view.close(); }
     event click $(#exit) { view.parameters.close(); view.close(); }
-    view << event activate (as) { if( as === false ) { view.parameters.inactive(); view.close(); } }
+    view << event activate (as) { if( as === false ) { view.parameters.inactive(); } }
 </script>
 </head>
 <body>

@@ -1,15 +1,17 @@
-var trayIcon = true; // Create trayIcon
+var trayIcon = false; // Create trayIcon
 var trayMenu = null;
 var trayCentered = true; // True to center the menu to the TrayIcon
 
 function initTray() {
-    if(trayIcon) {
+    if(!trayIcon) {
+        trayIcon = true;
         view.trayIcon {
           image: self.loadImage(self.url("TrayIcon06.png")),
           text: "Welcome!"
         };
     } else {
-       view.trayIcon(#remove); 
+        trayIcon = false;
+        view.trayIcon(#remove); 
     }
 }
 
@@ -31,14 +33,13 @@ view << event trayicon-click(evt) {
         
         function show() { view.state = View.WINDOW_SHOWN; trayMenu=null; }
         function hide() { view.state = View.WINDOW_HIDDEN; trayMenu=null; }
-        function inactive() { trayMenu=null; }
+        function inactive() { trayMenu.close(); trayMenu=null; }
         function close() { view.close(); }
         if(!trayMenu) {
             trayMenu = view.window{
                 url: self.url("tray.htm"),
                 x: x, y: y,
                 width: width, height: height,
-                state: View.WINDOW_SHOWN,
                 parameters: { show: show, hide: hide, inactive: inactive, close: close }
             };
             // trayMenu.move(x, y, width, height);
