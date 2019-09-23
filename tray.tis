@@ -1,4 +1,4 @@
-var trayIcon = false; // Create trayIcon
+var trayIcon = false;
 var trayMenu = null;
 var trayCentered = true; // True to center the menu to the TrayIcon
 
@@ -25,10 +25,10 @@ view << event trayicon-click(evt) {
         var (sX1,sY1,sX2,sY2) = view.screenBox(#workarea, #rect );
         if (trayCentered) {
           tx < sX1 ? x = sX1 : (tx > sX2 ? x = (sX2 - width) : x = (tx-width/2));
-		      ty < sY1 ? y = sY1 : (ty > sY2 ? y = (sY2 - height) : y = (ty-height/2));
+	  ty < sY1 ? y = sY1 : (ty > sY2 ? y = (sY2 - height) : y = (ty-height/2));
         } else {
           tx < sX1 ? x = sX1 : x = (sX2 - width);
-		      ty < sY1 ? y = sY1 : y = (ty - height);
+	  ty < sY1 ? y = sY1 : y = (ty - height);
         }
         
         function show() { view.state = View.WINDOW_SHOWN; trayMenu=null; }
