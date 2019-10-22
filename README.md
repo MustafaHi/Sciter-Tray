@@ -1,5 +1,5 @@
 # Sciter-Tray
-Sciter Tray Menu in Tiscript
+Sciter Tray Menu in Tiscript v2.0
 
 
 ## Install
@@ -25,14 +25,15 @@ initTray();
 or add your own create tray icon function
 
 
-## customizing
+## Customizing
+To set the menu to a popup set `trayMenu = $('popup selector')`
+and check `demo.htm` for further guidance.
 
 To change the items in tray menu edit `tray.htm`
-after changing it you need to change the width and height in `tray.tis`
 
 To uncenter the tray menu set `trayCenter = false;`
 
 If you want your app to close to tray:
 ```js
-event click $(#close) { trayIcon ? view.state = View.WINDOW_HIDDEN : view.close(); }
+event click $('close button selector') { trayIcon ? view.state = View.WINDOW_HIDDEN : view.close(); }
 ```

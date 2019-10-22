@@ -1,12 +1,57 @@
 <html>
 <head>
-  <title>TrayIcon demo</title>
-</head>
-<script src="tray.tis" type="text/tiscript"></script>
+<title>TrayIcon demo</title>
+<style>
+  /* Tray popup style */
+  #trayPopup {
+    width: 150dip;
+    border-radius: 4dip;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.7), 0 1px 3px rgba(0,0,0,0.4);
+  }
+  li {
+    display: block;
+    padding: 10dip;
+    background: #fff;
+    font-size: 15dip;
+    font-weight: 500;
+    color: #222;
+  }
+  li:hover {
+      background: #ddd;
+  }
+  .header { font-weight: bold; font-size: 12dip; }
+  b {
+      display: block;
+      border-bottom: 1dip solid #aaa;
+  }
+</style>
+
+<script src="tray.tis" type="text/tiscript"></script>  <!-- Add tray.tis -->
 <script type="text/tiscript">
   initTray();
+  //trayMenu = $(#trayPopup);
+  event click $(button)
+  {
+    if (!trayMenu) { trayMenu = $(#trayPopup); this.value = "POPUP"; }
+    else           { trayMenu = null; this.value = "TRAY WINDOW"; }
+  }
+  event click $(#show) { view.state = View.WINDOW_SHOWN; }
+  event click $(#hide) { view.state = View.WINDOW_HIDDEN; }
+  event click $(#exit) { view.close(); }
 </script>
+
+<popup #trayPopup>
+    <div>
+      <li #show>Show</li>
+      <li #hide>Hide</li>
+      <li #exit>Exit</li>
+    </div>
+</popup>
+
+</head>
 <body>
   You can Interact with the tray menu bellow
+  <button>Toggle Menu</button>
 </body>
 </html>

@@ -11,19 +11,22 @@ outline: none;
 box-sizing: border-box;
 }
 html {
-    height: min-content;
-    max-width: 150dip;
-    overflow: hidden;
+    /* YOU MUST SET A WIDTH TO YOUR LIKING */
+    min-width: 150dip;
+    /* width: max-content; */
+    
+    height: max-content;
     background: transparent;
+    overflow: hidden;
 }
 body {
-    height: min-content;
-    /* max-width: 150dip; */
-    border-radius: 5dip;
+    height: max-content;
+    border-radius: 4dip;
     overflow: hidden;
     background: #fff;
-    /* box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08); */
-    /* If you want to add shadow make the body height and width 4px less than html */
+    /* If you want to add shadow you must add margin */
+    box-shadow: 0 4px 6px rgba(50,50,93,0.7), 0 1px 3px rgba(0,0,0,0.4);
+    margin: 5dip;
 }
 li {
     display: block;
@@ -39,15 +42,16 @@ li:hover {
 .header { font-weight: bold; font-size: 12dip; }
 b {
     display: block;
-    border-bottom: 1dip solid #999;
+    border-bottom: 1dip solid #aaa;
 }
 </style>
 <script type="text/tiscript">
     view.state = View.WINDOW_SHOWN;
-    $(body).state.focus = true; // needed for 4.3.0.16
-    event click $(#show) { view.parameters.show(); view.close(); }
-    event click $(#hide) { view.parameters.hide(); view.close(); }
-    event click $(#exit) { view.parameters.close(); view.close(); }
+    view.windowTopmost = true;
+    $(body).state.focus = true;
+    event click $(#show) { view.parameters.show(); }
+    event click $(#hide) { view.parameters.hide(); }
+    event click $(#exit) { view.parameters.close(); }
     view << event activate (as) { if( as === false ) { view.parameters.inactive(); } }
 </script>
 </head>
@@ -56,6 +60,7 @@ b {
     <li.header>Sciter TrayMenu</li>
     <b/>
     <li #show>Show app</li>
+    <li>More app</li>
     <li #hide>Hide app</li>
     <b/>
     <li #exit>Exit!</li>
