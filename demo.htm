@@ -1,3 +1,7 @@
+<!-- 
+  Sciter Tray Menu v3.0
+  https://github.com/MustafaHi/Sciter-Tray
+-->
 <html>
 <head>
 <title>TrayIcon demo</title>
@@ -25,19 +29,27 @@
       display: block;
       border-bottom: 1dip solid #aaa;
   }
+  button {
+    min-width: 4.5em;
+  }
 </style>
 
 <script src="tray.tis" type="text/tiscript"></script>  <!-- Add tray.tis -->
 <script type="text/tiscript">
   initTray();
   //trayMenu = $(#trayPopup);
-  event click $(button)
+  event click $(#toggleMenu)
   {
-    if (!trayMenu) { trayMenu = $(#trayPopup); this.value = "POPUP"; }
-    else           { trayMenu = null; this.value = "TRAY WINDOW"; }
+    trayMenu   = trayMenu ?  null   : $(#trayPopup);
+    this.value = trayMenu ? "POPUP" : "WINDOW";
   }
-  event click $(#show) { view.state = View.WINDOW_SHOWN; }
-  event click $(#hide) { view.state = View.WINDOW_HIDDEN; }
+  event click $(#toggleCentered)
+  {
+    trayCentered = !trayCentered;
+    this.value   =  trayCentered ? "CENTERED" : "NOT CENTERED";
+  }
+  event click $(#show) { view.state = View.WINDOW_SHOWN;  trayMenu.closePopup(); }
+  event click $(#hide) { view.state = View.WINDOW_HIDDEN; trayMenu.closePopup(); }
   event click $(#exit) { view.close(); }
 </script>
 
@@ -51,7 +63,9 @@
 
 </head>
 <body>
-  You can Interact with the tray menu bellow
-  <button>Toggle Menu</button>
+  You can Interact with the
+  <button #toggleMenu>WINDOW</button> 
+  tray menu bellow that is
+  <button #toggleCentered>CENTERED</button>
 </body>
 </html>

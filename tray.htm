@@ -5,10 +5,6 @@
 * {
 margin: 0dip;
 padding: 0dip;
-border: none;
-text-decoration: none;
-outline: none;
-box-sizing: border-box;
 }
 html {
     /* YOU MUST SET A WIDTH TO YOUR LIKING */
@@ -46,9 +42,6 @@ b {
 }
 </style>
 <script type="text/tiscript">
-    view.state = View.WINDOW_SHOWN;
-    view.windowTopmost = true;
-    $(body).state.focus = true;
     event click $(#show) { view.parameters.show(); }
     event click $(#hide) { view.parameters.hide(); }
     event click $(#exit) { view.parameters.close(); }
