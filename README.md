@@ -30,7 +30,7 @@ To set the menu to a popup set `trayMenu = $(popup selector)`, check `demo.htm` 
 
 To change the items in tray menu edit `tray.htm`
 
-To uncenter the tray menu set `trayCenter = false;`
+To uncenter the tray menu set `trayCentered = false;`
 
 If you want your app to close to tray:
 ```js
