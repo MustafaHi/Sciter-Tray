@@ -1,4 +1,4 @@
-// Sciter Tray Menu v3.0
+// Sciter Tray Menu v3.1
 // https://github.com/MustafaHi/Sciter-Tray
 
 var trayMenu = null; // keep null to use tray.htm or give it a selector to use a popup
@@ -18,7 +18,7 @@ function initTray(trayIcon = true) {
 
 view << event trayicon-click(evt) {
   // if the main app window not showing on top add  view.windowTopmost = true;  then  view.windowTopmost = false;
-    if (evt.buttons == 1) {view.state = View.WINDOW_SHOWN; view.focus = self;}
+    if (evt.buttons == 1) {view.state = View.WINDOW_SHOWN; view.focus = self; view.windowTopmost = true; view.windowTopmost = false; }
     else {
         if(!trayMenu) {
             function show() { trayMenu.close(); view.state = View.WINDOW_SHOWN; }
@@ -47,7 +47,7 @@ view << event trayicon-click(evt) {
             trayMenu.WindowTopmost = true;
             trayMenu.focus = self;
         }
-        else {
+        else if(trayMenu?.isElement) {
             trayMenu.focus = self;
             var (tx,ty) = view.trayIcon(#place);
             var (sx,sy) = view.box(#position,#client,#screen);

@@ -1,5 +1,5 @@
 # Sciter-Tray
-Sciter Tray Menu in Tiscript - v3.0
+Sciter Tray Menu in Tiscript - v3.1
 
 
 ## Install
