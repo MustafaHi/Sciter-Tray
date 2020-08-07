@@ -1,4 +1,4 @@
-// Sciter Tray Menu v3.1
+// Sciter Tray Menu v3.2
 // https://github.com/MustafaHi/Sciter-Tray
 
 var trayMenu = null; // keep null to use tray.htm or give it a selector to use a popup
@@ -44,7 +44,7 @@ view << event trayicon-click(evt) {
             }
             trayMenu.move(x.toInteger(), y, w, h);
             trayMenu.state = View.WINDOW_SHOWN;
-            trayMenu.WindowTopmost = true;
+            trayMenu.windowTopmost = true;
             trayMenu.focus = self;
         }
         else if(trayMenu?.isElement) {
