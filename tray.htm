@@ -9,13 +9,14 @@ padding: 0dip;
 html {
     /* YOU MUST SET A WIDTH TO YOUR LIKING */
     min-width: 150dip;
-    /* width: max-content; */
+    width: max-content;
     
     height: max-content;
     background: transparent;
     overflow: hidden;
 }
 body {
+    width: max-content;
     height: max-content;
     border-radius: 4dip;
     overflow: hidden;
@@ -36,26 +37,18 @@ li:hover {
     background: #ddd;
 }
 .header { font-weight: bold; font-size: 12dip; }
-b {
-    display: block;
-    border-bottom: 1dip solid #aaa;
-}
 </style>
 <script type="text/tiscript">
-    event click $(#show) { view.parameters.show(); }
-    event click $(#hide) { view.parameters.hide(); }
-    event click $(#exit) { view.parameters.close(); }
-    view << event activate (as) { if( as === false ) { view.parameters.inactive(); } }
 </script>
 </head>
 <body>
 <ul>
     <li.header>Sciter TrayMenu</li>
-    <b/>
+    <hr/>
     <li #show>Show app</li>
     <li>More app</li>
     <li #hide>Hide app</li>
-    <b/>
+    <hr/>
     <li #exit>Exit!</li>
 </ul>
 </body>

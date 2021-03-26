@@ -1,5 +1,5 @@
 <!-- 
-  Sciter Tray Menu v3.0
+  Sciter Tray Menu
   https://github.com/MustafaHi/Sciter-Tray
 -->
 <html>
@@ -25,32 +25,47 @@
       background: #ddd;
   }
   .header { font-weight: bold; font-size: 12dip; }
-  b {
-      display: block;
-      border-bottom: 1dip solid #aaa;
-  }
   button {
     min-width: 4.5em;
   }
 </style>
 
-<script src="tray.tis" type="text/tiscript"></script>  <!-- Add tray.tis -->
+<script src="tray.tis" type="text/tiscript"></script>  <!-- TISCRIPT -->
 <script type="text/tiscript">
-  initTray();
-  //trayMenu = $(#trayPopup);
+  // include "tray.tis"
+  Tray.init();
+
   event click $(#toggleMenu)
   {
-    trayMenu   = trayMenu ?  null   : $(#trayPopup);
-    this.value = trayMenu ? "POPUP" : "WINDOW";
+    Tray.menu  = Tray.menu?.isElement ? undefined : $(#trayPopup);
+    this.value = Tray.menu ? "POPUP" : "WINDOW";
   }
   event click $(#toggleCentered)
   {
-    trayCentered = !trayCentered;
-    this.value   =  trayCentered ? "CENTERED" : "NOT CENTERED";
+    Tray.center = !Tray.center;
+    this.value  =  Tray.center ? "CENTERED" : "NOT CENTERED";
   }
-  event click $(#show) { view.state = View.WINDOW_SHOWN;  trayMenu.closePopup(); }
-  event click $(#hide) { view.state = View.WINDOW_HIDDEN; trayMenu.closePopup(); }
+  event click $(#show) { view.state = View.WINDOW_SHOWN;  }
+  event click $(#hide) { view.state = View.WINDOW_HIDDEN; }
   event click $(#exit) { view.close(); }
+</script>
+
+<script src="tray.js" type="text/javascript"></script>  <!-- JAVASCRIPT -->
+<script type="text/javascript" type="module">
+  // import { Tray } from "tray.js"; // Prefix line:16 in tray.js with `export`
+  Tray.init();
+
+  document.getElementById("toggleMenu").on("click", function(evt, el) {
+      Tray.menu     = Tray.menu instanceof Element ? undefined : document.getElementById("trayPopup");
+      el.innerHTML  = Tray.menu ? "POPUP" : "WINDOW";
+  });
+  document.getElementById("toggleCentered").on("click", function(evt, el) {
+      Tray.center  = !Tray.center;
+      el.innerHTML =  Tray.center ? "CENTERED" : "NOT CENTERED";
+  });
+  document.$("#show").on("click", () => { Window.this.state = Window.WINDOW_SHOWN;  });
+  document.$("#hide").on("click", () => { Window.this.state = Window.WINDOW_HIDDEN; });
+  document.$("#exit").on("click", () => { Window.this.close(); });
 </script>
 
 <popup #trayPopup>
