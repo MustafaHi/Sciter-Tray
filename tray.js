@@ -70,7 +70,7 @@ Window.this.on("trayiconclick", function(evt) {
 
             // Functions for tray.htm
             Tray.menu.document.on("click", "#show", () => { view.state = Window.WINDOW_SHOWN;      });
-            Tray.menu.document.on("click", "#hide", () => { view.state = Window.WINDOW_HIDDEN;     });
+            Tray.menu.document.on("click", "#hide", () => { view.state = Window.WINDOW_HIDDEN; Tray.menu.state = Window.WINDOW_HIDDEN; });
             Tray.menu.document.on("click", "#exit", () => { view.trayIcon("remove"); view.close(); });
             Tray.menu.on("activate", (evt) => { if (evt.reason == 0) Tray.menu.state = Window.WINDOW_HIDDEN; });
         }
